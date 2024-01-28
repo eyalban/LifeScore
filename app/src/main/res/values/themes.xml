@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Base application theme -->
+    <style name="Theme.LifeScore" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Primary color for the app -->
+        <item name="colorPrimary">@color/colorPrimary</item>
 
-    <style name="Theme.LifeScore" parent="android:Theme.Material.Light.NoActionBar" />
+        <!-- Darker variant for the status bar and contextual app bars -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+
+        <!-- Accent color for user interface controls -->
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- Customize the ActionBar (Toolbar) -->
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+    </style>
+
+    <!-- Style for the ActionBar (Toolbar) -->
+    <style name="MyActionBar" parent="Widget.AppCompat.ActionBar.Solid">
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
 </resources>
