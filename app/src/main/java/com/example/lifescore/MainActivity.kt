@@ -4,7 +4,9 @@ import android.app.AlertDialog
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.DatePicker
 import android.widget.Toast
 import java.time.LocalDate
 import java.util.*
@@ -12,39 +14,27 @@ import java.util.*
 
 class `MainActivity` : AppCompatActivity() {
 
-    private lateinit var selectedDate: LocalDate
+    private lateinit var datePicker: DatePicker
+    private lateinit var btnAddRating: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btnAddRating = findViewById<Button>(R.id.btnAddRating)
+        datePicker = findViewById(R.id.datePicker)
+        btnAddRating = findViewById(R.id.btnAddRating)
+
         btnAddRating.setOnClickListener {
-            showDatePickerDialog()
+                val day = datePicker.dayOfMonth
+                val month = datePicker.month
+                val year = datePicker.year
+
+                val selectedDate = String.format("%04d-%02d-%02d", year, month + 1, day)
+                showRatingDialog(selectedDate)
         }
     }
 
-    private fun showDatePickerDialog() {
-        val calendar = Calendar.getInstance()
-        val currentYear = calendar.get(Calendar.YEAR)
-        val currentMonth = calendar.get(Calendar.MONTH)
-        val currentDay = calendar.get(Calendar.DAY_OF_MONTH)
-
-        val datePickerDialog = DatePickerDialog(
-            this,
-            DatePickerDialog.OnDateSetListener { _, year, month, day ->
-                selectedDate = LocalDate.of(year, month + 1, day)
-                showRatingDialog()
-            },
-            currentYear,
-            currentMonth,
-            currentDay
-        )
-
-        datePickerDialog.show()
-    }
-
-    private fun showRatingDialog() {
+    private fun showRatingDialog(selectedDate: String) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Rate Date")
 
