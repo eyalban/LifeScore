@@ -25,6 +25,7 @@
         android:layout_below="@id/toolbar"
         android:layout_centerInParent="true"
         android:layout_marginTop="16dp" />
+
     <!-- Add Rating Button -->
     <Button
         android:id="@+id/btnAddRating"
@@ -34,5 +35,16 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:text="Add Rating" />
+
+    <!-- TextView to display the rating -->
+    <TextView
+        android:id="@+id/tvRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnAddRating"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text=""
+        android:textSize="18sp" />
 
 </RelativeLayout>
